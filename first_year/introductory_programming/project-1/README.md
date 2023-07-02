@@ -27,12 +27,12 @@ A command for calculating the sum starts with the + sign, and a command for calc
 
 The syntax for representing a polynomial is described by the following extended Backus-Naur Form (BNF) notation, with the starting symbol <polynomial>:
 
-<polynomial> ::= "0" | [ "-" ] <monomial> { <operation> <monomial> }
-<operation> ::= "+" | "-"
-<monomial> ::= "1" | <many> | [ <many> ] "x" [ "^" <many> ]
-<many> ::= "1" <digit> { <digit> } | <digit from 2 to 9> { <digit> }
-<digit> ::= "0" | "1" | <digit from 2 to 9>
-<digit from 2 to 9> ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+<polynomial> ::= "0" | [ "-" ] <monomial> { <operation> <monomial> }  
+<operation> ::= "+" | "-"  
+<monomial> ::= "1" | <many> | [ <many> ] "x" [ "^" <many> ]  
+<many> ::= "1" <digit> { <digit> } | <digit from 2 to 9> { <digit> }  
+<digit> ::= "0" | "1" | <digit from 2 to 9>  
+<digit from 2 to 9> ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  
 Curly brackets denote zero or more repetitions, square brackets enclose optional parts, and the vertical bar denotes an alternative. Auxiliary symbols are enclosed in angle brackets, and terminal symbols are enclosed in quotation marks. The terminal symbols correspond to the characters enclosed in quotation marks.
 
 In addition, the monomials of a polynomial are ordered in descending order of degrees.
