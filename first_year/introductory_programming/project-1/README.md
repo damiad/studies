@@ -25,14 +25,14 @@ The program's input consists of a sequence of lines containing commands, termina
 
 A command for calculating the sum starts with the + sign, and a command for calculating the product starts with the * sign. The following characters until the end of the line represent the argument of the command.
 
-The syntax for representing a polynomial is described by the following extended Backus-Naur Form (BNF) notation, with the starting symbol <polynomial>:
+The syntax for representing a polynomial is described by the following extended Backus-Naur Form (BNF) notation, with the starting symbol `<polynomial>`:
 
-<polynomial> ::= "0" | [ "-" ] <monomial> { <operation> <monomial> }  
+`<polynomial> ::= "0" | [ "-" ] <monomial> { <operation> <monomial> }  
 <operation> ::= "+" | "-"  
 <monomial> ::= "1" | <many> | [ <many> ] "x" [ "^" <many> ]  
 <many> ::= "1" <digit> { <digit> } | <digit from 2 to 9> { <digit> }  
 <digit> ::= "0" | "1" | <digit from 2 to 9>  
-<digit from 2 to 9> ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  
+<digit from 2 to 9> ::= "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"  `
 Curly brackets denote zero or more repetitions, square brackets enclose optional parts, and the vertical bar denotes an alternative. Auxiliary symbols are enclosed in angle brackets, and terminal symbols are enclosed in quotation marks. The terminal symbols correspond to the characters enclosed in quotation marks.
 
 In addition, the monomials of a polynomial are ordered in descending order of degrees.
@@ -40,7 +40,7 @@ In addition, the monomials of a polynomial are ordered in descending order of de
 There may be any number of spaces in a command line. However, a non-empty sequence of spaces does not occur at the beginning of a line or between two digits.
 
 ### Result format
-For each executed command, the program writes one line to the output with its result. The syntax for representing a polynomial in the output is the same as in the input. There is exactly one space before and after the "+" or "-" sign in the productions of the auxiliary symbol <operation>. Apart from that, there are no other spaces in the output.
+For each executed command, the program writes one line to the output with its result. The syntax for representing a polynomial in the output is the same as in the input. There is exactly one space before and after the "+" or "-" sign in the productions of the auxiliary symbol `<operation>`. Apart from that, there are no other spaces in the output.
 
 ### Constraints
 The input polynomials have at most 100 monomials.
