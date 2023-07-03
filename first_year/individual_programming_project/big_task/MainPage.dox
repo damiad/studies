@@ -1,0 +1,19 @@
+/**
+@mainpage Dokumentacja zadania telefony
+
+### Treść zadania
+
+Uwaga: aktualna treść zadania znajduje się w [Moodle](https://moodle.mimuw.edu.pl).
+
+### Opis programu
+
+Tegoroczne duże zadanie polega na zaimplementowaniu operacji na numerach telefonów.
+
+Stworzenie (i usuwanie) struktury przechowującej przekierowania 
+i struktury przechowującej ciąg numerów telefonów.
+Odczytwywanie numerów (prefixów) zapisanych w strukturach.
+Program robi operacje na numerach telefonicznych, takie jak zapisywanie i usuwanie 
+przekierowań, znajdowanie przekierowania danego numeru oraz wypisanie numeru
+zapisanego na danej pozycji w strukturze zawierającej ciąg numerów telefonów.
+
+*/
