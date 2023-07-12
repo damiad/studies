@@ -61,42 +61,52 @@ The VFS_FEXCLUSIVE and VFS_EXCLUSIVE system calls implement the same file lockin
 
 ## Task Attachments
 
-The task includes sample programs: "test-fexclusive.c," "test-exclusive-lock.c," and "test-exclusive-unlock.c," which illustrate the usage of the VFS_FEXCLUSIVE and VFS_EXCLUSIVE system calls to lock access to a file specified as an argument to the program. An example usage scenario for the "test-fexclusive.c" program:
+The task includes sample programs: "test-fexclusive.c," "test-exclusive-lock.c," and "test-exclusive-unlock.c," which illustrate the usage of the VFS_FEXCLUSIVE and VFS_EXCLUSIVE system calls to lock access to a file specified as an argument to the program. 
 
-# make test-fexclusive
+## Example usage scenario for the "test-fexclusive.c" program:
+
+```bash
+make test-fexclusive
 clang -O2 -o test-fexclusive test-fexclusive.c
-# touch /tmp/test.txt
-# ./test-fexclusive /tmp/test.txt
+touch /tmp/test.txt
+./test-fexclusive /tmp/test.txt
 Locking the file...
 VFS_FEXCLUSIVE result: 0, errno: 0
 Waiting... Press something
+```
 At this point, attempting to open the file /tmp/test.txt by another user will fail:
 
-# cat /tmp/test.txt
+```bash
+cat /tmp/test.txt
 cat: /tmp/test.txt: Permission denied
+```
 Continuing the test-fexclusive program will close the file /tmp/test.txt, unlocking it, and allowing other users to work with it.
 
-Example usage scenario for the "test-exclusive-lock.c" program:
+## Example usage scenario for the "test-exclusive-lock.c" program:
 
-# make test-exclusive-lock
+```bash
+make test-exclusive-lock
 clang -O2 -o test-exclusive-lock test-exclusive-lock.c
-# touch /tmp/test.txt
-# ./test-exclusive-lock /tmp/test.txt
+touch /tmp/test.txt
+./test-exclusive-lock /tmp/test.txt
 Locking the file...
 VFS_EXCLUSIVE result: 0, errno: 0
-#
+```
 At this point, attempting to open the file /tmp/test.txt by another user will fail:
 
+```bash
 # cat /tmp/test.txt
 cat: /tmp/test.txt: Permission denied
+```
 The file can be unlocked using the test-exclusive-unlock.c program:
 
-# make test-exclusive-unlock
+```bash
+make test-exclusive-unlock
 clang -O2 -o test-exclusive-unlock test-exclusive-unlock.c
-# ./test-exclusive-unlock /tmp/test.txt
+./test-exclusive-unlock /tmp/test.txt
 Unlocking the file...
 VFS_EXCLUSIVE result: 0, errno: 0
-#
+```
 Now other users can work with the file again.
 
 Comments within the code of the sample programs also illustrate the usage of the other system call flags.
