@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Usuń plik</title>
+  </head>
+  <body>
+    <h1>Usuń plik</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="file">Wybierz plik do usunięcia:</label>
+        <select id="file" name="file_id" required>
+            {% for file in files %}
+                <option value="{{ file.id }}">{{ file.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Usuń</button>
+    </form>
+  </body>
+</html>

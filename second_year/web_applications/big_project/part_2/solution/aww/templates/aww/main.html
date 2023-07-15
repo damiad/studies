@@ -1,0 +1,129 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Projekt Aplikacje WWW</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="{% static 'aww/style.min.css' %}" />
+  </head>
+  <body>
+    <button id="theme-switcher"></button>
+
+    <div class="topnav">
+      <a href="{% url 'add_catalog' %}">Dodaj Katalog</a>
+      <a href="{% url 'delete_catalog' %}">Usuń Katalog</a>
+      <a href="{% url 'add_file' %}">Dodaj Plik</a>
+      <a href="{% url 'delete_file' %}">Usuń Plik</a>
+      <button onclick="compile()">Kompiluj</button>
+    </div>
+
+    <div class="container">
+      <div class="column side">
+        <h3>Wybór Pliku</h3>
+        <ul class="file-tree">
+          {% for catalog in root_catalogs %}
+            {% include "aww/file_tree_node.html" with catalog=catalog %}
+          {% endfor %}
+          {% for file in root_files %}
+            <li>
+              <a href="#" class="file-link" data-file-id="{{ file.id }}">{{ file.name }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="column main">
+        <div class="row">
+          <div class="column center">
+            <h3>Tekst Programu</h3>
+              <div id="tekst-programu">
+                <pre class="language-c"><code></code></pre>
+              </div>
+          </div>
+
+          <div class="column right">
+            <h3>Fragment Kodu</h3>
+              <button id="save-button">Zapisz na dysku</button>
+              <div id="fragment-kodu">
+                <pre><code></code></pre>
+              </div>
+          </div>
+        </div>
+        <div class="topnav">
+          <a href="#" class="tablinks" data-tab="tab1">STANDARD</a>
+          <a href="#" class="tablinks" data-tab="tab2">OPTYMALIZACJE</a>
+          <a href="#" class="tablinks" data-tab="tab3">PROCESOR</a>
+          <a href="#" class="tablinks" data-tab="tab4">ZALEŻNE</a>
+        </div>
+
+        <div class="column data">
+          <div class="tabcontent" id="tab1">
+            <select id="standard-select" name="standard">
+              <option value="c89">C89</option>
+              <option value="c99">C99</option>
+              <option value="c11">C11</option>
+            </select>
+            <button onclick="saveStandard()">Wybierz standard</button>
+          </div>
+          <div class="tabcontent" id="tab2">
+            <form>
+              <label>Wybierz optymalizacje:</label><br>
+              <input type="checkbox" id="fomit-frame-pointer" name="optymalizacje[]" value="-fomit-frame-pointer">
+              <label for="fomit-frame-pointer">-fomit-frame-pointer</label><br>
+              <input type="checkbox" id="finline-functions" name="optymalizacje[]" value="-finline-functions">
+              <label for="finline-functions">-finline-functions</label><br>
+              <input type="checkbox" id="fno-reorder-blocks" name="optymalizacje[]" value="-fno-reorder-blocks">
+              <label for="fno-reorder-blocks">-fno-reorder-blocks</label><br>
+              <input type="checkbox" id="fno-jump-tables" name="optymalizacje[]" value="-fno-jump-tables">
+              <label for="fno-jump-tables">-fno-jump-tables</label><br>
+              <input type="checkbox" id="fpack-struct" name="optymalizacje[]" value="-fpack-struct">
+              <label for="fpack-struct">-fpack-struct</label><br>
+              <button type="button" onclick="saveOptymalizacje()">Zapisz wybrane optymalizacje</button>
+            </form>
+          </div>
+          <div class="tabcontent" id="tab3">
+            <select id="procesor-select" name="procesor">
+              <option value="mcs51">MCS51</option>
+              <option value="z80">Z80</option>
+              <option value="stm8">STM8</option>
+            </select>
+            <button onclick="saveProcesor()">Wybierz procesor</button>
+          </div>
+          <div class="tabcontent" id="tab4">
+            <div id="zależne-mcs51" style="display:none;">
+              <label for="model-programu-select">Model programu:</label>
+              <select id="model-programu-select" name="model-programu">
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
+                <option value="4">Huge</option>
+              </select>
+              <button onclick="saveMcs51Options()">Zapisz</button>
+            </div>
+            <div id="zależne-z80" style="display:none;">
+              <label for="model-pamięci-select">Model pamięci:</label>
+              <select id="model-pamięci-select" name="model-pamięci">
+                <option value="1">Small</option>
+                <option value="2">Medium</option>
+                <option value="3">Large</option>
+              </select>
+              <button onclick="saveZ80Options()">Zapisz</button>
+            </div>
+            <div id="zależne-stm8" style="display:none;">
+              <label for="konfiguracja-pamięci-select">Konfiguracja pamięci:</label>
+              <select id="konfiguracja-pamięci-select" name="konfiguracja-pamięci">
+                <option value="1">--fmem-none</option>
+                <option value="2">--fmem-sm</option>
+                <option value="3">--fmem-lg</option>
+              </select>
+              <button onclick="saveStm8Options()">Zapisz</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{% static 'aww/script.js' %}"></script>
+  </body>
+</html>

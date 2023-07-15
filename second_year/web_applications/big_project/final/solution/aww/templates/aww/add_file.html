@@ -1,0 +1,25 @@
+<div>
+	<h1>Dodaj plik</h1>
+	<form method="post" id="addFileForm" onsubmit="submitAddFileForm(event)">
+		<label for="name">Nazwa pliku:</label>
+		<input type="text" id="name" name="name" required>
+		<br>
+		<label for="description">Opis:</label>
+		<textarea id="description" name="description"></textarea>
+		<br>
+		<label for="catalog">Katalog:</label>
+		<select id="catalog" name="catalog">
+			<option value="">Wybierz katalog</option>
+			{% for catalog in catalogs %}
+				<option value="{{ catalog.id }}">{{ catalog.name }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<label for="file">Plik:</label>
+		<input type="file" id="file" name="file" required>
+		<br>
+		<input type="submit" value="Dodaj">
+	</form>
+	<button onclick="closeMenuContainer()">Anuluj</button>
+</div>
+

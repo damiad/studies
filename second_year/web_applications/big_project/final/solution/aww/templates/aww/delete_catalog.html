@@ -1,0 +1,14 @@
+<div>
+    <h1>Usuń katalog</h1>
+    <form method="post" id="removeCatalogForm" onsubmit="submitRemoveCatalogForm(event)">
+        <label for="catalog">Wybierz katalog do usunięcia:</label>
+        <select id="catalog" name="catalog_id" required>
+            {% for catalog in catalogs %}
+                <option value="{{ catalog.id }}">{{ catalog.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Usuń">
+    </form>
+    <button onclick="closeMenuContainer()">Anuluj</button>
+</div>

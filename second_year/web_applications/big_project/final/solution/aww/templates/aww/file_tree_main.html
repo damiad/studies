@@ -1,0 +1,12 @@
+<h3>Wybór Pliku</h3>
+<ul class="file-tree">
+    {% for catalog in root_catalogs %}
+        {% include "aww/file_tree_node.html" with catalog=catalog %}
+    {% endfor %}
+    {% for file in root_files %}
+        <li>
+            <a href="#" class="file-link" data-file-id="{{ file.id }}">{{ file.name }}</a>
+        </li>
+    {% endfor %}
+</ul>
+

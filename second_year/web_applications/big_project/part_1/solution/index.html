@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <title>Projekt Aplikacje WWW</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="style.min.css" />
+  </head>
+  <body>
+    <button id="theme-switcher"></button>
+
+    <div class="topnav">
+      <a href="#">Plik</a>
+      <a href="#">Edycja</a>
+      <a href="#">Opcje</a>
+    </div>
+
+    <div class="container">
+      <div class="column side">
+        <h3>Wybór Pliku</h3>
+        <ul class="file-tree">
+          <li>
+            <a href="#">Folder 1</a>
+            <ul>
+              <li>
+                <a href="#">Plik 1</a>
+              </li>
+              <li>
+                <a href="#">SubFolder 1</a>
+                <ul>
+                  <li>
+                    <a href="#">Plik 2</a>
+                  </li>
+                  <li>
+                    <a href="#">SubFolder 1</a>
+                    <ul>
+                      <li>
+                        <a href="#">Plik 3</a>
+                      </li>
+                      <li>
+                        <a href="#">Plik 4</a>
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <a href="#">Folder 2</a>
+            <ul>
+              <li>
+                <a href="#">Plik 5</a>
+              </li>
+              <li>
+                <a href="#">Plik 6</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <div class="column main">
+        <div class="row">
+          <div class="column center">
+            <h3>Tekst Programu</h3>
+            <pre><code>
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;limits.h&gt;
+
+#define MAX_NODES 1000
+
+int graph[MAX_NODES][MAX_NODES];
+int distances[MAX_NODES];
+int visited[MAX_NODES];
+int num_nodes;
+
+void dijkstra(int start_node, int end_node) {
+    int i, j;
+    
+    for (i = 0; i &lt; num_nodes; i++) {
+        distances[i] = INT_MAX;
+        visited[i] = 0;
+    }
+    
+    distances[start_node] = 0;
+    
+    for (i = 0; i &lt; num_nodes - 1; i++) {
+        int min_distance = INT_MAX;
+        int min_index = -1;
+        
+        for (j = 0; j &lt; num_nodes; j++) {
+            if (!visited[j] &amp;&amp; distances[j] &lt; min_distance) {
+                min_distance = distances[j];
+                min_index = j;
+            }
+        }
+        
+        if (min_index == -1) {
+            break;
+        }
+        
+        visited[min_index] = 1;
+        
+        for (j = 0; j &lt; num_nodes; j++) {
+            if (graph[min_index][j] != 0 &amp;&amp; !visited[j]) {
+                int dist = distances[min_index] + graph[min_index][j];
+                
+                if (dist &lt; distances[j]) {
+                    distances[j] = dist;
+                }
+            }
+        }
+    }
+    
+    if (distances[end_node] != INT_MAX) {
+        printf("Shortest path between nodes %d and %d is %d\n",
+           start_node, end_node, distances[end_node]);
+    } else {
+        printf("No path between nodes %d and %d\n", start_node, end_node);
+    }
+}
+
+int main() {
+    int i, j;
+    int start_node, end_node;
+    
+    printf("Enter the number of nodes in the graph (max %d): ", MAX_NODES);
+    scanf("%d", &amp;num_nodes);
+    
+    printf("Enter the adjacency matrix for the graph:\n");
+    
+    for (i = 0; i &lt; num_nodes; i++) {
+        for (j = 0; j &lt; num_nodes; j++) {
+            scanf("%d", &amp;graph[i][j]);
+        }
+    }
+    
+    printf("Enter the start node: ");
+    scanf("%d", &amp;start_node);
+    
+    printf("Enter the end node: ");
+    scanf("%d", &amp;end_node);
+    
+    dijkstra(start_node, end_node);
+    
+    return 0;
+}
+          </code></pre>
+          </div>
+
+          <div class="column right">
+            <h3>Fragment Kodu</h3>
+            <pre><code>  
+for (j = 0; j &lt; num_nodes; j++) {
+    if (graph[min_index][j] != 0 &amp;&amp; !visited[j]) {
+        int dist = distances[min_index] + graph[min_index][j];
+        
+        if (dist &lt; distances[j]) {
+            distances[j] = dist;
+        }
+    }
+}
+          </code></pre>
+          </div>
+        </div>
+        <div class="topnav">
+          <a href="#" class="tablinks" data-tab="tab1">Tab1</a>
+          <a href="#" class="tablinks" data-tab="tab2">Tab2</a>
+          <a href="#" class="tablinks" data-tab="tab3">Tab3</a>
+          <a href="#" class="tablinks" data-tab="tab4">Tab4</a>
+        </div>
+
+        <div class="column data">
+          <div class="tabcontent" id="tab1">
+            <h3>Zawartość Tab1</h3>
+            <p>Tu będzie zawartość zależna od zakładki Tab1</p>
+          </div>
+          <div class="tabcontent" id="tab2">
+            <h3>Zawartość Tab2</h3>
+            <p>Tu będzie zawartość zależna od zakładki Tab2</p>
+          </div>
+          <div class="tabcontent" id="tab3">
+            <h3>Zawartość Tab3</h3>
+            <p>Tu będzie zawartość zależna od zakładki Tab3</p>
+          </div>
+          <div class="tabcontent" id="tab4">
+            <h3>Zawartość Tab4</h3>
+            <p>Tu będzie zawartość zależna od zakładki Tab4</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

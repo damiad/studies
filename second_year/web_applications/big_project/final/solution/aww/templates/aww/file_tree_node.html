@@ -1,0 +1,23 @@
+{% if catalog.is_available %}
+    <li>
+        <a href="#">{{ catalog.name }}</a>
+        {% if catalog.subcatalogs.all %}
+            <ul>
+                {% for subcatalog in catalog.subcatalogs.all %}
+                    {% include "aww/file_tree_node.html" with catalog=subcatalog %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% if catalog.files.all %}
+            <ul>
+                {% for file in catalog.files.all %}
+                    {% if file.is_available %}
+                        <li>
+                            <a href="#" class="file-link" data-file-id="{{ file.id }}">{{ file.name }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </li>
+{% endif %}

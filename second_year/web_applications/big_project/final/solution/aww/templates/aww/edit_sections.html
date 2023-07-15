@@ -1,0 +1,26 @@
+<form method="POST" id="saveSectionsForm" onsubmit="saveSections(event)">
+  {% for section in sections %}
+    <div class="section-form">
+      <label for="start_line_{{ forloop.counter0 }}">Start line:</label>
+      <input type="text" id="start_line_{{ forloop.counter0 }}" name="start_line_{{ forloop.counter0 }}" value="{{ section.start_line }}"><br>
+      <label for="end_line_{{ forloop.counter0 }}">End line:</label>
+      <input type="text" id="end_line_{{ forloop.counter0 }}" name="end_line_{{ forloop.counter0 }}" value="{{ section.end_line }}"><br>
+      <label for="section_type_{{ forloop.counter0 }}">Section type:</label>
+      <select id="section_type_{{ forloop.counter0 }}" name="section_type_{{ forloop.counter0 }}">
+        <option value="PRC" {% if section.type == 'PRC' %}selected{% endif %}>Procedura</option>
+        <option value="CMT" {% if section.type == 'CMT' %}selected{% endif %}>Komentarz</option>
+        <option value="CD" {% if section.type == 'CD' %}selected{% endif %}>Dyrektywny kompilatora</option>
+        <option value="VAR" {% if section.type == 'VAR' %}selected{% endif %}>Deklaracje zmiennych</option>
+        <option value="ASM" {% if section.type == 'ASM' %}selected{% endif %}>Wstawka asemblerowa</option>
+      </select><br>
+      <label for="name_{{ forloop.counter0 }}">Name:</label>
+      <input type="text" id="name_{{ forloop.counter0 }}" name="name_{{ forloop.counter0 }}" value="{{ section.name }}"><br>
+      <label for="description_{{ forloop.counter0 }}">Description:</label>
+      <textarea id="description_{{ forloop.counter0 }}" name="description_{{ forloop.counter0 }}"></textarea><br>
+      <label for="content_{{ forloop.counter0 }}">Content:</label>
+      <textarea id="content_{{ forloop.counter0 }}" name="content_{{ forloop.counter0 }}">{{ section.content }}</textarea><br>
+      <br><br>
+    </div>
+  {% endfor %}
+  <input type="submit" value="Zapisz sekcje">
+</form>

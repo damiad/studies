@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dodaj katalog</title>
+</head>
+<body>
+	<h1>Dodaj katalog</h1>
+	<form method="post">
+		{% csrf_token %}
+		<label for="name">Nazwa:</label>
+		<input type="text" id="name" name="name" required>
+		<br>
+		<label for="description">Opis:</label>
+		<textarea id="description" name="description"></textarea>
+		<br>
+		<label for="parent">Katalog nadrzędny:</label>
+		<select id="parent" name="parent">
+			<option value="">Wybierz katalog</option>
+			{% for catalog in catalogs %}
+				<option value="{{ catalog.id }}">{{ catalog.name }}</option>
+			{% endfor %}
+		</select>
+		<br>
+		<input type="submit" value="Dodaj">
+	</form>
+</body>
+</html>

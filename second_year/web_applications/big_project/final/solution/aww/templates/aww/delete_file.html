@@ -1,0 +1,14 @@
+<div>
+  <h1>Usuń plik</h1>
+  <form method="post" id="removeFileForm" onsubmit="submitRemoveFileForm(event)">
+    <label for="file">Wybierz plik do usunięcia:</label>
+    <select id="file" name="file_id" required>
+      {% for file in files %}
+      <option value="{{ file.id }}">{{ file.name }}</option>
+      {% endfor %}
+    </select>
+    <br>
+    <input type="submit" value="Usuń">
+  </form>
+  <button onclick="closeMenuContainer()">Anuluj</button>
+</div>

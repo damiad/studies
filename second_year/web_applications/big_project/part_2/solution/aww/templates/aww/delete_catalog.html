@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Usuń katalog</title>
+  </head>
+  <body>
+    <h1>Usuń katalog</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="catalog">Wybierz katalog do usunięcia:</label>
+        <select id="catalog" name="catalog_id" required>
+            {% for catalog in catalogs %}
+                <option value="{{ catalog.id }}">{{ catalog.name }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <button type="submit">Usuń</button>
+    </form>
+  </body>
+</html>
