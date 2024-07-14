@@ -1,7 +1,7 @@
 /** @file
  * Implementacja zadania zadania 1 (JNP).
  *
- * @authors Antoni Młynarczyk, Damian Dąbrowski
+ * @author Damian Dąbrowski
  * @date 2022
  */
 

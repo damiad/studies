@@ -1,7 +1,6 @@
 /** @file
  * Interfejs klasy przechowującej przekierowania numerów telefonicznych
  *
- * @author Marcin Peczarski <marpe@mimuw.edu.pl>
  * @author Damian Dąbrowski <dd439954@students.mimuw.edu.pl>
  * @copyright Uniwersytet Warszawski
  * @date 2022
