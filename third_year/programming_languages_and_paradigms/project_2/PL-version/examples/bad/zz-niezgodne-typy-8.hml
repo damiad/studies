@@ -1,0 +1,10 @@
+let foldl_function f accumulator_list list_of_values =
+    if null list_of_values so
+        accumulator_list
+    otherwise
+        let head_value = head list_of_values
+        in let tail_values = tail list_of_values
+        in foldl_function f (f accumulator_list head_value) tail_values
+in let product = foldl_function (\accumulator value -> accumulator * value) 1
+in let simple_lambda = \x -> 17
+in product [simple_lambda]

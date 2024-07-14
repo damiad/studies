@@ -1,0 +1,66 @@
+-------------------- Comments ----------------------
+comment "--" ;
+comment "{#" "#}" ;
+
+-------------------- Separators --------------------
+separator Ident "" ;
+separator Par "" ;
+separator Exp "," ;
+
+-------------------- Parameters --------------------
+ParTrue.                    Par  ::= "true" ;
+ParFalse.                   Par  ::= "false" ;
+ParInteger.                 Par  ::= Integer ;
+ParFunction.                Par  ::= Ident ;
+ParLambda.                  Par  ::= "(" Exp ")" ;
+ParConsComma.               Par  ::= "[" [Exp] "]" ;
+ParConsRangeClosed.         Par  ::= "[" Par ".-." Par "]" ;
+ParConsRangeOpen.           Par  ::= "[" Par ".-.]" ;
+
+-------------------- Expressions -------------------
+ExpIf.                      Exp  ::= "if" Exp "so" Exp "otherwise" Exp ;
+ExpLet.                     Exp  ::= "let" Ident [Ident] "=" Exp "in" Exp ;
+ExpLambda.                  Exp  ::= "\\" [Ident] "->" Exp ;
+
+---------- Logical --------------------------------- 
+ExpAnd.                     Exp1 ::= Exp1 "&&" Exp2 ;
+ExpOr.                      Exp1 ::= Exp1 "||" Exp2 ;
+ExpNot.                     Exp1 ::=      "!"  Exp2 ;
+ExpEqual.                   Exp1 ::= Exp1 "==" Exp2 ;
+ExpNotEqual.                Exp1 ::= Exp1 "!=" Exp2 ;
+ExpLessThan.                Exp1 ::= Exp1 "<"  Exp2 ;
+ExpGreaterThan.             Exp1 ::= Exp1 ">"  Exp2 ;
+ExpLessEqual.               Exp1 ::= Exp1 "<=" Exp2 ;
+ExpGreaterEqual.            Exp1 ::= Exp1 ">=" Exp2 ;
+ExpConcat.                  Exp1 ::= Exp1 "@"  Exp2 ;
+
+---------- Arithmetic ------------------------------ 
+ExpAdd.                     Exp2 ::= Exp2 "+"  Exp3 ;
+ExpSub.                     Exp2 ::= Exp2 "-"  Exp3 ;
+
+---------- Multiplicative -------------------------- 
+ExpMultiply.                Exp3 ::= Exp3 "*"  Exp4 ;
+ExpDivide.                  Exp3 ::= Exp3 "/"  Exp4 ;
+ExpModulo.                  Exp3 ::= Exp3 "%"  Exp4 ;
+
+---------- Exponential -----------------------------
+ExpPower.                   Exp4 ::= Exp4 "^"  Exp5 ;
+
+---------- Elementary ------------------------------ 
+ExpTrue.                    Exp5 ::= "true" ;
+ExpFalse.                   Exp5 ::= "false" ;
+ExpInteger.                 Exp5 ::= Integer ;
+ExpNegativeInteger.         Exp5 ::= "-" Integer ;
+ExpFunctionApplication.     Exp5 ::= Ident [Par] ;
+ExpLambdaApplication.       Exp5 ::= "(" Exp ")" [Par] ;
+ExpConsComma.               Exp5 ::= "[" [Exp] "]" ;
+ExpConsDots.                Exp5 ::= Par ":" Par ;
+ExpConsRangeClosed.         Exp5 ::= "[" Par ".-." Par "]" ;
+ExpConsRangeOpen.           Exp5 ::= "[" Par ".-.]" ;
+
+---------- Priorities ------------------------------
+_.                          Exp  ::= Exp1 ;
+_.                          Exp1 ::= Exp2 ;
+_.                          Exp2 ::= Exp3 ;
+_.                          Exp3 ::= Exp4 ;
+_.                          Exp4 ::= Exp5 ;

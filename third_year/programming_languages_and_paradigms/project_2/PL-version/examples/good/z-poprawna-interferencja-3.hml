@@ -1,0 +1,7 @@
+let mapf l x =
+  if null l so
+    []
+  otherwise
+    (head l x) : (mapf (tail l) x)
+in
+mapf

@@ -1,0 +1,2 @@
+let never_ends x = 1 + never_ends x
+in never_ends 0

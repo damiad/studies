@@ -1,0 +1,8 @@
+let quick_pow x e =
+    if e == 0 so 
+        1
+    otherwise 
+        let y = quick_pow x (e / 2)
+        in y^2 * (if e % 2 == 0 so 1 otherwise x)
+
+in quick_pow 6 10

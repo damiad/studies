@@ -1,0 +1,3 @@
+let lambda_one = \x -> 1 in
+let lambda_sum = \x y -> x + y in
+[lambda_sum, lambda_one]

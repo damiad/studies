@@ -1,0 +1,4 @@
+let x = 4 in
+    let f y = x + y in
+        let x = 17 in
+            f 0

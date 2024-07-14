@@ -1,0 +1,4 @@
+let left = [4.-.7]
+in let right = [11.-.12]
+in let mid = 8:(9:(10:[]))
+in left @ mid @ right

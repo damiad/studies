@@ -1,0 +1,6 @@
+{#
+    Interpreter handles certain common errors, such as division by zero,
+    providing clear error messages with the cause and location within the code
+    if a fault occurs.
+#}
+1 -- We just print that in a nice green color (and test comments)

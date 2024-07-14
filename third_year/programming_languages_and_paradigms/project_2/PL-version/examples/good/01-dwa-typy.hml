@@ -1,0 +1,3 @@
+let a = 37 in
+let b = true
+in b

@@ -1,0 +1,5 @@
+if 0 == 101 so 101
+otherwise if 0 == 7 so 7
+otherwise if 0 == 1 so 1
+otherwise if 0 == 0 so 0
+otherwise -1

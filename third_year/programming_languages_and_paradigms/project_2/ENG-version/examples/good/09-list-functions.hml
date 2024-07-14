@@ -1,0 +1,5 @@
+let xs = [17,101,307] in
+if null xs so 
+    -1 
+otherwise 
+    head (tail xs)

@@ -1,0 +1,6 @@
+let first = 3 in 
+let second = [] in
+let third = \x -> 17 * x
+in let fourth = true
+in let fifth x y = x - y
+in fifth (third first) first

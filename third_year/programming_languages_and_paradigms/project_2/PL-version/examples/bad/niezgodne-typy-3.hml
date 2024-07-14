@@ -1,0 +1,2 @@
+let identity x = x in
+[[identity], identity]

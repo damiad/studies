@@ -1,0 +1,5 @@
+let getElements list count =
+    if count == 0 || null list so []
+    otherwise 
+        (head list) : (getElements (tail list) (count - 1))
+in getElements [2048.-.] 7

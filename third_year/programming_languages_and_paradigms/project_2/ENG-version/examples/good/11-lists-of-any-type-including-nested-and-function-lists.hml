@@ -1,0 +1,2 @@
+let simple_lambda = \x -> 17
+in [[simple_lambda], [simple_lambda, simple_lambda], [simple_lambda, simple_lambda, simple_lambda]]
