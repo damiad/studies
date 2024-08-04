@@ -41,7 +41,7 @@ $$
 
 - Write a script that computes the length of the cubic B-spline curve based on given nodes and control points.
 - Assume equally spaced nodes $u_i = i$ for simplicity.
-- Use a composite quadrature with intervals $[u_n, u_{n+1}), \ldots, [u_{N-n-1}, u_{N-n})$.
+- Use a composite quadrature with intervals $$[u_n, u_{n+1}), \ldots, [u_{N-n-1}, u_{N-n})$$.
 
 ### Optimization:
 
